@@ -565,8 +565,10 @@ ul{margin:0;padding:0;list-style:none}
 .final .lede{max-width:56ch;margin:0 auto var(--s6)}
 
 /* legal + footer */
-.legal{background:var(--surface);padding:var(--s5) 0;border-top:1px solid var(--border)}
-.disclaimer{font-size:var(--t-xs);color:var(--muted);line-height:1.65;max-width:920px}
+/* live carries this as fine print under the CTA button, on the same navy
+   ground, not as a band of its own between the CTA and the footer */
+.fineprint{font-size:12.5px;line-height:1.6;color:#AFC4DD;max-width:476px;
+  margin:26px auto 0;text-align:center}
 /* Footer, matched to the live page: lighter navy ground, two tidy link columns
    rather than one long list, and much tighter vertical spacing. */
 .ft{background:#0A2440;color:#AFC4DD;padding:var(--s5) 0 0}
@@ -1038,14 +1040,10 @@ ul{margin:0;padding:0;list-style:none}
     <h2>Let the guy who owns a bathroom company<em>run your leads.</em></h2>
     <p class="lede">Brian will tell you straight whether you're a fit, explain exactly how it works, and if it's a match, his team takes it from there.</p>
     <a class="btn btn-light" href="#book">Schedule a call with Brian</a>
+    <p class="fineprint">Results described reflect one operator's actual experience and are not a guarantee or a prediction of your results. Any figures shown are illustrative and pending final confirmation.</p>
   </div>
 </section>
 
-<div class="legal">
-  <div class="wrap">
-    <p class="disclaimer">Results described reflect one operator's actual experience and are not a guarantee or a prediction of your results. Any figures shown are illustrative and pending final confirmation.</p>
-  </div>
-</div>
 
 </main>
 
