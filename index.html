@@ -420,43 +420,102 @@ ul{margin:0;padding:0;list-style:none}
 /* The two boxes read as a matched pair now, with the YES side clearly the one
    he wants and the NO side deliberately quieter. Rows are numbered so the two
    lists scan against each other. */
-.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);position:relative}
+/* Dark section. The fit side is the lit one and the skip side deliberately
+   recedes, so the choice reads before a word is. Colours are the same tokens
+   used everywhere else, no new palette. */
+#fit{position:relative;overflow:hidden;isolation:isolate}
+#fit::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.55;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px}
+#fit::after{content:"";position:absolute;left:-10%;top:-30%;width:60%;aspect-ratio:1;z-index:-1;
+  border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(18,122,62,.16),transparent 66%)}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);position:relative}
 .fit-grid::after{content:"OR";position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);z-index:2;background:var(--bg);color:var(--muted);
-  font-size:var(--t-xs);font-weight:800;letter-spacing:.18em;padding:10px 4px;
-  border:1px solid var(--border);border-radius:99px;line-height:1}
+  transform:translate(-50%,-50%);z-index:2;background:var(--ink);color:var(--on-ink-muted);
+  font-size:var(--t-xs);font-weight:800;letter-spacing:.18em;padding:12px 6px;
+  border:1px solid rgba(255,255,255,.22);border-radius:99px;line-height:1}
 @media (max-width:760px){.fit-grid::after{display:none}}
-.fitbox{background:#fff;border:1px solid var(--border-strong);padding:0;
-  box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column}
-.fitbox::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--green)}
-.fitbox.no{background:var(--surface);border-style:dashed;box-shadow:none}
-.fitbox.no::before{background:var(--border-strong)}
-.fitbox h3{display:flex;align-items:center;gap:12px;font-size:var(--t-xl);
-  margin:0;padding:var(--s5) var(--s5) var(--s4);border-bottom:1px solid var(--border)}
-.fitbox h3 .ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;
-  background:var(--green);color:#fff}
-.fitbox.no h3 .ic{background:var(--border-strong);color:var(--muted)}
-.fitbox.no h3{color:var(--muted);border-bottom-color:var(--border-strong)}
+.fitbox{background:#0A2740;border:1px solid rgba(255,255,255,.14);padding:0;
+  box-shadow:0 28px 70px rgba(0,0,0,.34);position:relative;overflow:hidden;
+  display:flex;flex-direction:column}
+.fitbox::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:#2FA362}
+.fitbox.no{background:transparent;border-style:dashed;border-color:rgba(255,255,255,.20);
+  box-shadow:none}
+.fitbox.no::before{background:rgba(255,255,255,.22)}
+.fitbox h3{display:flex;align-items:center;gap:13px;font-size:var(--t-xl);color:#fff;
+  margin:0;padding:var(--s5) var(--s5) var(--s4);border-bottom:1px solid rgba(255,255,255,.14)}
+.fitbox h3 .ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:#2FA362;color:#04210F;box-shadow:0 0 0 6px rgba(47,163,98,.14)}
+.fitbox.no h3 .ic{background:rgba(255,255,255,.13);color:#C7D2DE;box-shadow:none}
+.fitbox.no h3{color:#C7D2DE;border-bottom-color:rgba(255,255,255,.14)}
 .fitbox ul{padding:var(--s3) var(--s5) var(--s5)}
-.fitbox li{display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start;
-  padding:15px 0;border-bottom:1px dotted var(--border)}
+.fitbox li{display:grid;grid-template-columns:32px 1fr;gap:15px;align-items:start;
+  padding:16px 0;border-bottom:1px solid rgba(255,255,255,.10);color:#E4ECF4;
+  font-size:var(--t-md)}
 .fitbox li:last-child{border-bottom:0}
-.fitbox li .n{font-size:var(--t-xs);font-weight:800;color:var(--green);
-  border:1px solid var(--green);border-radius:50%;width:26px;height:26px;
+.fitbox li .n{font-size:var(--t-xs);font-weight:800;color:#6FE0A0;
+  border:1px solid rgba(111,224,160,.55);border-radius:50%;width:28px;height:28px;
   display:grid;place-items:center;line-height:1}
-.fitbox.no li{color:var(--muted)}
-.fitbox.no li .n{color:var(--faint);border-color:var(--border-strong)}
-.fitbox.yes .foot{margin-top:auto;background:#F1F8F3;border-top:1px solid #CFE6D8;
-  padding:var(--s4) var(--s5);font-size:var(--t-sm);font-weight:700;color:#0F5F31}
-.fitbox.no .foot{margin-top:auto;background:transparent;border-top:1px dashed var(--border-strong);
-  padding:var(--s4) var(--s5);font-size:var(--t-sm);color:var(--muted)}
+.fitbox.no li{color:#9FAEBE}
+.fitbox.no li .n{color:#8B99A8;border-color:rgba(255,255,255,.20)}
+.fitbox.yes .foot{margin-top:auto;background:#0F3845;
+  border-top:1px solid rgba(47,163,98,.34);padding:var(--s4) var(--s5);
+  font-size:var(--t-md);font-weight:700;color:#9CEFC1;display:flex;align-items:center;gap:10px}
+.fitbox.no .foot{margin-top:auto;background:transparent;
+  border-top:1px dashed rgba(255,255,255,.20);padding:var(--s4) var(--s5);
+  font-size:var(--t-md);color:#9FAEBE}
+.fit-end{margin-top:var(--s6);display:flex;align-items:center;justify-content:center;
+  gap:var(--s4);flex-wrap:wrap;text-align:center}
+.fit-end span{color:var(--on-ink-muted);font-size:var(--t-lg)}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
-.step{background:#fff;border:1px solid var(--border-strong);padding:var(--s5);box-shadow:var(--shadow)}
-.step .n{font-size:var(--t-sm);font-weight:800;color:var(--orange-ink);letter-spacing:.1em}
-.step h3{font-size:var(--t-lg);margin:11px 0}
+/* Three flat boxes said nothing about sequence. This is a timeline: a rule
+   runs through numbered discs, each step carries the minute it happens at,
+   and the last marker is the outcome rather than a fourth step. */
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);
+  padding-top:var(--s7)}
+.steps::before{content:"";position:absolute;top:33px;left:8%;right:8%;height:2px;
+  background:linear-gradient(90deg,var(--orange) 0%,var(--orange) 66%,var(--border-strong) 66%);
+  transform-origin:left center}
+@media (max-width:760px){.steps::before{display:none}}
+.step{position:relative;background:#fff;border:1px solid var(--border-strong);
+  padding:var(--s6) var(--s5) var(--s5);box-shadow:var(--shadow);
+  transition:box-shadow 240ms var(--ease-out),transform 240ms var(--ease-out),
+             border-color 240ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .step:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--orange)}
+  .step:hover .disc{background:var(--orange);color:#fff;border-color:var(--orange)}
+}
+.step .disc{position:absolute;top:-34px;left:var(--s5);width:68px;height:68px;border-radius:50%;
+  background:#fff;border:2px solid var(--orange);color:var(--orange-ink);
+  display:grid;place-items:center;font-size:26px;font-weight:800;line-height:1;
+  box-shadow:0 6px 20px rgba(2,24,45,.12);
+  transition:background-color 240ms var(--ease-out),color 240ms var(--ease-out),
+             border-color 240ms var(--ease-out)}
+.step .clock{display:inline-block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:800;color:var(--muted);background:var(--surface);border:1px solid var(--border);
+  padding:5px 10px;border-radius:99px;margin-bottom:var(--s3)}
+.step .n{font-size:var(--t-xs);font-weight:800;color:var(--orange-ink);letter-spacing:.16em;
+  display:block;margin-bottom:8px}
+.step h3{font-size:var(--t-xl);margin:0 0 11px}
 .step p{color:var(--muted)}
+.step .who{margin-top:var(--s4);padding-top:var(--s3);border-top:1px dotted var(--border);
+  font-size:var(--t-sm);font-weight:700;color:var(--ink);display:flex;align-items:center;gap:9px}
+.step .who svg{color:var(--orange);flex:none}
+/* the outcome, not a fourth step */
+.steps-end{margin-top:var(--s5);background:var(--ink);color:#fff;padding:var(--s5) var(--s6);
+  display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap}
+.steps-end .mark{width:52px;height:52px;border-radius:50%;background:var(--orange);
+  display:grid;place-items:center;flex:none;color:#fff}
+.steps-end b{display:block;font-size:var(--t-xl);font-weight:700}
+.steps-end span{color:var(--on-ink-muted);font-size:var(--t-md)}
+.steps-end .t{flex:1;min-width:240px}
+.steps-end .btn{white-space:nowrap}
+@media (max-width:760px){
+  .steps{padding-top:var(--s6)}
+  .step{padding-top:var(--s7)}
+  .steps-end{padding:var(--s5) var(--s4)}
+}
 
 /* testimonial */
 .testi{max-width:900px;margin:0 auto;text-align:center;background:#fff;
@@ -579,6 +638,14 @@ ul{margin:0;padding:0;list-style:none}
     .fitbox li:nth-child(4){animation-range:entry 11% cover 31%}
     .fitbox .foot{animation:enter linear both;animation-timeline:view();animation-range:entry 14% cover 34%}
     .fitbox h3 .ic{animation:growIn linear both;animation-timeline:view();animation-range:entry 0% cover 18%}
+    /* the timeline rule draws itself, then the discs pop in one after another */
+    .steps::before{animation:drawX linear both;animation-timeline:view();animation-range:entry 4% cover 30%}
+    @keyframes drawX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    .step .disc{animation:popIn linear both;animation-timeline:view();animation-range:entry 6% cover 26%}
+    @keyframes popIn{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+    .step:nth-child(2) .disc{animation-range:entry 10% cover 30%}
+    .step:nth-child(3) .disc{animation-range:entry 14% cover 34%}
+    .steps-end{animation:enter linear both;animation-timeline:view();animation-range:entry 8% cover 32%}
     .logo-panel img{animation:growIn linear both;animation-timeline:view();animation-range:entry 6% cover 30%}
     /* the vertical rule between the two tracks draws itself as you scroll */
     .tracks::before{animation:drawLine linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
@@ -762,7 +829,7 @@ ul{margin:0;padding:0;list-style:none}
   </div>
 </section>
 
-<section class="sec alt" id="what">
+<section class="sec" id="what">
   <div class="wrap">
     <div class="tracks">
       <div class="track shop">
@@ -879,7 +946,7 @@ ul{margin:0;padding:0;list-style:none}
   </div>
 </section>
 
-<section class="sec" id="fit">
+<section class="sec ink" id="fit">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Straight talk</span>
@@ -908,6 +975,10 @@ ul{margin:0;padding:0;list-style:none}
       </div>
     
     </div>
+    <div class="fit-end">
+      <span>Not sure which side you are on? That is what the twenty minutes is for.</span>
+      <a class="btn btn-primary" href="#book">Find out on the call</a>
+    </div>
   </div>
 </section>
 
@@ -918,12 +989,36 @@ ul{margin:0;padding:0;list-style:none}
       <h2>Twenty minutes to see if you're a fit.</h2>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">STEP 01</div><h3>He checks if you're a fit</h3>
-        <p>Your market, your job sizes, whether you can handle more work. Brian figures out fast whether this makes sense for your business.</p></div>
-      <div class="step"><div class="n">STEP 02</div><h3>He explains exactly how it works</h3>
-        <p>What he handles, what lands on your calendar, and what it costs. No mystery, no jargon. You'll know precisely what you're getting.</p></div>
-      <div class="step"><div class="n">STEP 03</div><h3>If it's a fit, he turns it on</h3>
-        <p>Brian and his team run everything from there, calls included. Your only job is to answer and show up to the estimates.</p></div>
+      <div class="step">
+        <span class="disc" aria-hidden="true">01</span>
+        <span class="clock">Minute 0</span>
+        <span class="n">STEP 01</span>
+        <h3>He checks if you're a fit</h3>
+        <p>Your market, your job sizes, whether you can handle more work. Brian figures out fast whether this makes sense for your business.</p>
+        <div class="who"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>You do the talking</div>
+      </div>
+      <div class="step">
+        <span class="disc" aria-hidden="true">02</span>
+        <span class="clock">Minute 7</span>
+        <span class="n">STEP 02</span>
+        <h3>He explains exactly how it works</h3>
+        <p>What he handles, what lands on your calendar, and what it costs. No mystery, no jargon. You'll know precisely what you're getting.</p>
+        <div class="who"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>He does the talking</div>
+      </div>
+      <div class="step">
+        <span class="disc" aria-hidden="true">03</span>
+        <span class="clock">Minute 15</span>
+        <span class="n">STEP 03</span>
+        <h3>If it's a fit, he turns it on</h3>
+        <p>Brian and his team run everything from there, calls included. Your only job is to answer and show up to the estimates.</p>
+        <div class="who"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Nothing to set up</div>
+      </div>
+    </div>
+      <div class="steps-end">
+        <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 12.5l5 5 11-11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="t"><b>Minute 20: you know either way.</b><span>Either it is a fit and his team takes it from there, or he tells you it is not.</span></span>
+        <a class="btn btn-primary" href="#book">Book the call</a>
+      
     </div>
   </div>
 </section>
@@ -940,8 +1035,7 @@ ul{margin:0;padding:0;list-style:none}
       </span>
       <q>He runs the whole thing. I don't touch the ads or the follow-up. I just answer when a booked homeowner is ready and go close the job. First marketer who actually owns a contracting business too.</q>
       <div class="who">Bathroom remodeler &middot; Baton Rouge, LA</div>
-      <div class="flag"><b>Needs a name and a face.</b> An unattributed testimonial is the weakest proof on the page and it sits next to the strongest. Ask this remodeler for a first name, company, city and a headshot, or one line of written permission to use them.</div>
-    </div>
+      </div>
   </div>
 </section>
 
