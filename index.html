@@ -57,7 +57,7 @@ ul{margin:0;padding:0;list-style:none}
 /* a grid child defaults to min-width:auto, so one long word can push a track
    past the viewport */
 .cards>*,.fit-grid>*,.steps>*,.book-grid>*,.story>*,.tracks>*,.brian>*,
-.ft-in>*,.lw-row>*,.hero-in>*,.statrow>*{min-width:0}
+.ft-in>*,.hero-in>*,.statrow>*{min-width:0}
 
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink);
   color:#fff;padding:14px 22px;font-weight:800;text-decoration:none}
@@ -222,15 +222,6 @@ ul{margin:0;padding:0;list-style:none}
   color:var(--on-ink-muted)}
 .feat-name{font-size:var(--t-lg);color:#fff;font-weight:700;letter-spacing:.01em}
 .feat-dot{color:rgba(255,255,255,.34)}
-.logowall{margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid rgba(255,255,255,.16)}
-.lw-label{display:block;text-align:center;font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;font-weight:800;color:var(--on-ink-muted);margin-bottom:var(--s3)}
-.lw-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);max-width:840px;margin:0 auto}
-.lw-slot{border:1px dashed rgba(255,255,255,.30);border-radius:3px;padding:15px 10px;
-  text-align:center;font-size:10px;color:var(--on-ink-muted);line-height:1.5}
-.lw-slot b{display:block;color:var(--gold);font-size:10px;letter-spacing:.17em;
-  text-transform:uppercase;margin-bottom:4px}
-@media (max-width:640px){.lw-row{grid-template-columns:1fr 1fr}}
 
 /* --------------------------------------------------------------- sections */
 .sec{padding:var(--s9) 0}
@@ -570,7 +561,7 @@ ul{margin:0;padding:0;list-style:none}
     @keyframes enterR{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
     @keyframes growIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
     .story > div,.quote,.brian-ph,.brian > div:last-child,
-    .card,.fitbox,.step,.testi,.widget,.statrow .i,.lw-slot,.book-checks li,
+    .card,.fitbox,.step,.testi,.widget,.statrow .i,.book-checks li,
     .sec-head,.converge,.mrow{
       animation:enter linear both;
       animation-timeline:view();
@@ -736,15 +727,6 @@ ul{margin:0;padding:0;list-style:none}
       <span class="feat-name">Entrepreneur</span><span class="feat-dot" aria-hidden="true">&middot;</span>
       <span class="feat-name">Inc.</span><span class="feat-dot" aria-hidden="true">&middot;</span>
       <span class="feat-name">HuffPost</span>
-    </div>
-    <div class="logowall">
-      <span class="lw-label">Remodelers he runs this for</span>
-      <div class="lw-row">
-        <span class="lw-slot"><b>Logo slot</b>client marks or written permission needed</span>
-        <span class="lw-slot"><b>Logo slot</b>client marks or written permission needed</span>
-        <span class="lw-slot"><b>Logo slot</b>client marks or written permission needed</span>
-        <span class="lw-slot"><b>Logo slot</b>client marks or written permission needed</span>
-      </div>
     </div>
   </div>
 </section>
